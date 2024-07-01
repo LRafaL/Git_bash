@@ -1,0 +1,147 @@
+
+1.bloss@Sania MINGW64 /                              Перейти в домашнюю директорию
+  $ cd ~    
+  touch bash2.txt                                    Создать файл bash2.txt
+
+2.cd ~                                               Зайти в домашнюю директорию через терминал
+
+3.mkdir test3                                        Создать папку test 3
+  ls                                                 Посмотреть содержимое домашней директории
+
+4.cd test3                                           Перейти в папку test 3
+   echo -e "row1\nrow2\nrow3\nrow4" > 4.txt          Создать файл 4.txt и добавит в него четыре строки: row1, row2, row3, row4.
+   echo -e "row1\nrow2\nrow3\nrow4" > 5.txt           Создать файл 5.txt и добавит в него четыре строки: row1, row2, row3, row4.
+   echo -e "row1\nrow2\nrow3\nrow4" > 6.txt          Создать файл 6.txt и добавит в него четыре строки: row1, row2, row3, row4.
+   cat 4.txt 5.txt 6.txt                              Проверить содержимое файлов 4.txt 5.txt 6.txt
+row1
+row2
+row3
+row4
+row1
+row2
+row3
+row4
+row1
+row2
+row3
+row4
+
+5. grep "row2" 5.txt                                Найдите строку row2 в файле 5
+  row2
+
+6. grep -r "row" ~/test3                           Найдите строку row в папке test3 во всех файлах 
+/c/Users/bloss/test3/4.txt:row1
+/c/Users/bloss/test3/4.txt:row2
+/c/Users/bloss/test3/4.txt:row3
+/c/Users/bloss/test3/4.txt:row4
+/c/Users/bloss/test3/5.txt:row1
+/c/Users/bloss/test3/5.txt:row2
+/c/Users/bloss/test3/5.txt:row3
+/c/Users/bloss/test3/5.txt:row4
+/c/Users/bloss/test3/6.txt:row1
+/c/Users/bloss/test3/6.txt:row2
+/c/Users/bloss/test3/6.txt:row3
+/c/Users/bloss/test3/6.txt:row4
+
+
+7. grep -c "row" ~/test3/6.txt                   Посчитать сколько строк с содержимым row в файле 6
+   4
+
+8. find ~/test3 -name "5.txt"                    Найти файл 5 внутри папки test3 
+  /c/Users/bloss/test3/5.txt
+
+9.find ~/test3 -name "5.txt" -delete             Используя команду find, удалить файл 5
+  cd ~
+ cd test3
+ ls                                              Посмотреть содержимое  test3                                           
+  4.txt  6.txt
+
+
+10.echo "test" >> ~/test3/4.txt                  Используя команду echo, добавьте слово test в файл 4
+     cat 4.txt                                   Проверить содержимое файла 4.txt
+        row1
+        row2
+        row3
+        row4
+        test
+
+11. nano ~/test3/4.txt                 Использовать редактор nano для замены слова "test" на "fail" в файле 4.txt                     
+    Ctrl+\ для поиска test и Ctrl+Shift+6 для замены fail
+    Ctrl+O,  сохранить файл. Enter, подтвердить имя файла. Ctrl+X, выйти из nano.
+    
+    cat 4.txt                          Проверить содержимое файла 4.txt                       
+    row1
+    row2
+    row3
+    row4
+    fail
+
+12.nano ~/test3/4.txt               Добавить слово "test" в конец файла 4.txt и сохранить текущее содержимое
+   Добавить слово "test" в конец файла.Ctrl+O, сохранить файл.Enter, подтвердить имя файла.Ctrl+X, выйти из nano.
+   cat 4.txt                        Проверить содержимое файла 4.txt                       
+   row1
+   row2
+   row3
+   row4
+   fail
+   test
+
+13. ps
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+     1439    1438    1439      17964  pty0      197609 11:34:54 /usr/bin/bash
+     2589    1439    2589      15220  pty0      197609 15:37:42 /usr/bin/ps
+     1438       1    1438      14020  ?         197609 11:34:53 /usr/bin/mintty
+
+14.kill -9 666                                 
+   bash: kill: (666) - No such process
+
+15. ping artsiomrusau.com              Узнать доступность ресурса artsiomrusau.com, используя ping    
+
+Pinging artsiomrusau.com [15.197.225.128] with 32 bytes of data:
+Reply from 15.197.225.128: bytes=32 time=16ms TTL=244
+Reply from 15.197.225.128: bytes=32 time=14ms TTL=244
+Reply from 15.197.225.128: bytes=32 time=15ms TTL=244
+Reply from 15.197.225.128: bytes=32 time=15ms TTL=244
+
+Ping statistics for 15.197.225.128:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 14ms, Maximum = 16ms, Average = 15ms
+
+
+16. ping -n 5 artsiomrusau.com                 Отправить 5 пакетов на сайт artsiomrusau.com
+
+Pinging artsiomrusau.com [15.197.225.128] with 32 bytes of data:
+Reply from 15.197.225.128: bytes=32 time=16ms TTL=244
+Reply from 15.197.225.128: bytes=32 time=14ms TTL=244
+Reply from 15.197.225.128: bytes=32 time=16ms TTL=244
+Reply from 15.197.225.128: bytes=32 time=17ms TTL=244
+Reply from 15.197.225.128: bytes=32 time=18ms TTL=244
+
+Ping statistics for 15.197.225.128:
+    Packets: Sent = 5, Received = 5, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 14ms, Maximum = 18ms, Average = 16ms
+
+17.  curl -X GET "https://petstore.swagger.io/v2/pet/findByStatus?status=available" 
+      [{"id":377,"category":{"id":76,"name":"style"},"name":"Shawna","photoUrls":["http://thomas-dodson.com/"],"tags":[{"id":4,"name":"my"}],"status":"available"},{"id":15,"category":{"id":21,"name":"order"},"name":"Sarah","photoUrls":["https://mcdonald.com/"],"tags":[{"id":41,"name":"around"}],"status":"available"},{"id":149,"category":{"id":36,"name":"agency"},"name":"Robert","photoUrls":["https://www.brown.info/"],"tags":[{"id":10,"name":"class"}],"status":"available"},{"id":372,"category":{"id":66,"name":"find"},"name":"Michelle","photoUrls":["http://www.hall.com/"],"tags":[{"id":9,"name":"cup"}],"status":"available"},{"id":624,"category":{"id":26,"name":"probably"},"name":"Natalie","photoUrls":["http://woods.com/"]  
+
+18. curl -X POST "https://petstore.swagger.io/v2/user" \
+-H "accept: application/json" \
+-H "Content-Type: application/json" \
+-d '{
+      "id": 0,
+      "username": "yosia",
+      "firstName": "Yosia",
+      "lastName": "Smart",
+      "email": "yosia@gmail.com",
+      "password": "smart17",
+      "phone": "1234567890",
+      "userStatus": 0
+    }'
+{"code":200,"type":"unknown","message":"9223372036854760757"}
+     
+curl -X GET "https://petstore.swagger.io/v2/user/yosia"
+{"id":9223372036854760726,"username":"yosia","firstName":"Yosia","lastName":"Smart","email":"yosia@gmail.com","password":"smart17","phone":"1234567890","userStatus":0}
+
+
